@@ -1,6 +1,7 @@
 server {  
     listen 443 ssl; # managed by Certbot
     server_name triptalk-server.shop www.triptalk-server.shop;
+    resolver 127.0.0.11 valid=30s;
 
     ssl_certificate /etc/letsencrypt/live/triptalk-server.shop/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/triptalk-server.shop/privkey.pem; # managed by Certbot
