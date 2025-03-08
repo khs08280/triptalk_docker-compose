@@ -16,7 +16,7 @@ services:
 
   triptalk-app:
     build: .
-#    image: triptalk-registry.kr.ncr.ntruss.com/triptalk-app:latest
+    #    image: triptalk-registry.kr.ncr.ntruss.com/triptalk-app:latest
     container_name: triptalk-app
     ports:
       - "8080:8080"
@@ -31,7 +31,7 @@ services:
     networks:
       - app-network
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -44,7 +44,7 @@ services:
       - "443:443"
     volumes:
       - ./letsencrypt:/etc/letsencrypt:ro
-      - ./nginx/sites-enabled:/etc/nginx/sites-enabled:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
     depends_on:
       - triptalk-app
     networks:
